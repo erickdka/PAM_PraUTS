@@ -1,89 +1,112 @@
 import 'package:flutter/material.dart';
 import 'dataproduk.dart';
-import 'widget/button.dart';
 import 'detailproduk.dart';
 
 void main() {
-  runApp(HomeScreen());
+  runApp(MaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomePage(),
+  ));
 }
 
-class HomeScreen extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int activeMenu = 0;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-        title: Text('Mobil yang Tersedia', style: TextStyle(color: Color(0xff090a0d))),
-        elevation: 0,
-      ),
-      body: ListView(
-        children: produkdata.map(
-          (itemmobil) {
-            return Container(
-              height: 250,
-              padding: EdgeInsets.all(16),
-              child: Stack(
-                children: <Widget>[
-                  Container(
-                    decoration: BoxDecoration(boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.5),
-                        spreadRadius: 3,
-                        blurRadius: 5,
-                        offset: Offset(0, 3),
-                      )
-                    ]),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(10),
-                      child: Image.asset(
-                        itemmobil.gambar,
-                        fit: BoxFit.cover,
-                        height: 250,
-                        width: MediaQuery.of(context).size.width,
-                      ),
-                    ),
-                  ),
-                  Positioned(
-                    left: 0,
-                    right: 0,
-                    bottom: 0,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        mainAxisSize: MainAxisSize.max,
-                        children: <Widget>[
-                          Column(
-                            mainAxisSize: MainAxisSize.min,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: <Widget>[
-                              Text(
-                                'Rp.${itemmobil.harga},-/Day',
-                                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24, color: Colors.white),
-                              ),
-                              Text(
-                                '${itemmobil.nama} ${itemmobil.nama}',
-                                style: TextStyle(color: Color(0xff090a0d)),
-                              )
-                            ],
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    var size = MediaQuery.of(context).size;
+    return SafeArea(
+      child: ListView(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(
+              top: 20,
+              left: 20,
+              right: 20,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text(
+                  "Toko Online",
+                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.w400),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            height: 20,
+          ),
+          Wrap(
+            children: List.generate(dataItems.length, (index) {
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) => ProductDetailPage(
+                                id: dataItems[index]['id'].toString(),
+                                name: dataItems[index]['name'],
+                                code: dataItems[index]['code'],
+                                img: dataItems[index]['img'],
+                                price: dataItems[index]['price'].toString(),
+                                promotionPrice: dataItems[index]['promotionPrice'].toString(),
+                                size: dataItems[index]['size'],
+                                color: dataItems[index]['color'],
+                              )));
+                },
+                child: Card(
+                    elevation: 2,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: <Widget>[
+                        Hero(
+                          tag: dataItems[index]['id'].toString(),
+                          child: Container(
+                            width: (size.width - 16) / 2,
+                            height: (size.width - 16) / 2,
+                            decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(dataItems[index]['img']), fit: BoxFit.cover)),
                           ),
-                          InkWell(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context) {
-                                  return DetailProduk(produkdata: itemmobil);
-                                }));
-                              },
-                              child: KananButton())
-                        ],
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            );
-          },
-        ).toList(),
+                        ),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            dataItems[index]['code'],
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15),
+                          child: Text(
+                            dataItems[index]['price'].toString() + " USD",
+                            style: TextStyle(fontSize: 16),
+                          ),
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                      ],
+                    )),
+              );
+            }),
+          )
+        ],
       ),
     );
   }

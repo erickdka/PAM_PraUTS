@@ -1,199 +1,303 @@
 import 'package:flutter/material.dart';
-import 'dataproduk.dart';
-import 'main.dart';
-import 'widget/icon_card.dart';
+import 'package:line_icons/line_icons.dart';
+import 'colors.dart';
 
-class DetailProduk extends StatefulWidget {
-  final dataproduk produkdata;
+class ProductDetailPage extends StatefulWidget {
+  final String id;
+  final String name;
+  final String code;
+  final String img;
+  final String price;
+  final String promotionPrice;
+  final List size;
+  final List color;
 
-  const DetailProduk({this.produkdata});
-
+  const ProductDetailPage({required this.id, required this.name, required this.code, required this.img, required this.price, required this.promotionPrice, required this.size, required this.color});
   @override
-  _DetailProdukState createState() => _DetailProdukState();
+  _ProductDetailPageState createState() => _ProductDetailPageState();
 }
 
-class _DetailProdukState extends State<DetailProduk> {
-  bool imageAss = true;
-  String imageDetail = '';
-  int nilai = 0;
-
-  void kurang() {
-    if (nilai == 0) {
-      nilai = 0;
-      setState(() {});
-    } else {
-      nilai--;
-      setState(() {});
-    }
-  }
-
-  void tambah() {
-    nilai += 1;
-    setState(() {});
+class _ProductDetailPageState extends State<ProductDetailPage> {
+  int activeSize = 0;
+  int activeColor = 0;
+  String activeImg = '';
+  int qty = 1;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    setState(() {
+      activeImg = widget.img;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            SafeArea(
+      body: getBody(),
+    );
+  }
+
+  Widget getBody() {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 60),
+        child: ListView(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(left: 20, top: 20),
+              child: InkWell(
+                onTap: () {
+                  Navigator.pop(context);
+                },
+                child: Align(alignment: Alignment.centerLeft, child: Icon(Icons.arrow_back_ios)),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+            ),
+            Card(
+              elevation: 2,
+              child: Hero(
+                tag: widget.id.toString(),
+                child: Container(
+                  height: 400,
+                  decoration: BoxDecoration(image: DecorationImage(image: NetworkImage(activeImg), fit: BoxFit.cover)),
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                      icon: Icon(Icons.arrow_back)),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16),
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Name :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
                     child: Text(
-                      this.widget.produkdata.nama,
-                      style: TextStyle(color: Color(0xff090a0d), fontSize: 24, fontWeight: FontWeight.bold),
-                      textAlign: TextAlign.right,
+                      widget.name,
+                      style: TextStyle(fontSize: 16, height: 1.5),
                     ),
-                  )
+                  ),
                 ],
               ),
             ),
-            Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: imageAss
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(100)),
-                          child: Image.asset(
-                            this.widget.produkdata.gambar,
-                            width: MediaQuery.of(context).size.width,
-                            height: 300,
-                            fit: BoxFit.cover,
-                          ),
-                        )
-                      : ClipRRect(),
-                ),
-                Positioned(
-                  right: 0,
-                  child: Column(
-                    children: [
-                      InkWell(
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Code :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
+                    child: Text(
+                      widget.code,
+                      style: TextStyle(fontSize: 16, height: 1.5),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Price :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
+                      child: Row(
+                    children: <Widget>[
+                      Text(
+                        widget.promotionPrice + " USD",
+                        style: TextStyle(fontSize: 16, height: 1.5),
+                      ),
+                    ],
+                  )),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Size :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
+                      child: Wrap(
+                          children: List.generate(widget.size.length, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: InkWell(
                         onTap: () {
-                          imageAss = true;
-                          imageDetail = '';
-                          setState(() {});
+                          setState(() {
+                            activeSize = widget.size[index]['id'];
+                          });
                         },
                         child: Container(
-                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(4), color: Colors.white),
-                          padding: const EdgeInsets.all(1),
-                          margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(4),
-                            child: Image.asset(
-                              this.widget.produkdata.gambar,
-                              width: 65,
-                              height: 65,
-                              fit: BoxFit.cover,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                width: 2,
+                                color: activeSize == widget.size[index]['id'] ? primary : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 12, bottom: 12, right: 15, left: 15),
+                            child: Text(
+                              widget.size[index]['value'],
+                              style: TextStyle(fontSize: 16, height: 1.5),
                             ),
                           ),
                         ),
                       ),
-                    ],
-                  ),
-                )
-              ],
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 16),
-              height: 150,
-              child: ListView(
-                padding: const EdgeInsets.only(left: 32, right: 32),
-                scrollDirection: Axis.horizontal,
-                children: [
-                  IconCard(judul: "Harga", icon: Icons.monetization_on, value: this.widget.produkdata.harga.toString()),
+                    );
+                  }))),
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: Text(
-                'Deskripsi',
-                style: TextStyle(color: Color(0xff090a0d), fontSize: 22, fontWeight: FontWeight.bold),
-              ),
+            SizedBox(
+              height: 20,
             ),
             Padding(
-              padding: const EdgeInsets.fromLTRB(16, 0, 16, 48),
-              child: Text(
-                this.widget.produkdata.nama,
-                style: TextStyle(color: Color(0xffbcc4cd), fontSize: 16),
-                textAlign: TextAlign.justify,
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Expanded(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.blue,
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              kurang();
-                            },
-                            icon: Icon(Icons.remove),
-                            color: Colors.white,
-                          )),
-                      Container(
-                        color: Colors.white,
-                        child: Text('${nilai.toString()}/hari'),
-                      ),
-                      Container(
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(8),
-                            color: Colors.blue,
-                          ),
-                          child: IconButton(
-                            onPressed: () {
-                              tambah();
-                            },
-                            icon: Icon(Icons.add),
-                            color: Colors.white,
-                          )),
-                    ],
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Color :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
                   ),
-                ),
-                Expanded(
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: ElevatedButton(
-                        onPressed: () {
-                          if (nilai == 0) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text('ingin booking untuk berapa hari?'),
-                                duration: Duration(seconds: 1),
-                              ),
-                            );
-                          } else {}
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
+                      child: Wrap(
+                          children: List.generate(widget.color.length, (index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(right: 20),
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            activeColor = widget.color[index]['id'];
+                            activeImg = widget.color[index]['value'];
+                          });
                         },
-                        child: Padding(
-                          padding: const EdgeInsets.all(16.0),
-                          child: Text(
-                            "Booking Now",
-                            style: TextStyle(color: Colors.white),
-                          ),
-                        )),
+                        child: Container(
+                          width: 50,
+                          height: 50,
+                          decoration: BoxDecoration(
+                              image: DecorationImage(image: NetworkImage(widget.color[index]['value']), fit: BoxFit.cover),
+                              border: Border.all(
+                                width: 2,
+                                color: activeColor == widget.color[index]['id'] ? primary : Colors.transparent,
+                              ),
+                              borderRadius: BorderRadius.circular(5)),
+                        ),
+                      ),
+                    );
+                  }))),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    "Qty :",
+                    style: TextStyle(fontSize: 16, height: 1.5),
                   ),
-                ),
-              ],
+                  SizedBox(
+                    width: 20,
+                  ),
+                  Flexible(
+                      child: Row(
+                    children: <Widget>[
+                      InkWell(
+                        onTap: () {
+                          if (qty > 1) {
+                            setState(() {
+                              qty = --qty;
+                            });
+                          }
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(border: Border.all(color: black.withOpacity(0.5))),
+                          width: 35,
+                          height: 35,
+                          child: Icon(
+                            LineIcons.minus,
+                            color: black.withOpacity(0.5),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      Text(
+                        qty.toString(),
+                        style: TextStyle(fontSize: 16),
+                      ),
+                      SizedBox(
+                        width: 25,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          setState(() {
+                            qty = ++qty;
+                          });
+                        },
+                        child: Container(
+                          decoration: BoxDecoration(border: Border.all(color: black.withOpacity(0.5))),
+                          width: 35,
+                          height: 35,
+                          child: Icon(
+                            LineIcons.plus,
+                            color: black.withOpacity(0.5),
+                          ),
+                        ),
+                      )
+                    ],
+                  )),
+                ],
+              ),
             ),
           ],
         ),
