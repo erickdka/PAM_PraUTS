@@ -1,10 +1,8 @@
-import 'package:flutter/material.dart';
-
 List dataItems = [
   {
     "id": 1,
-    "code": "CS667880",
-    "name": "667880 Sexy tube top dress summer new fashion bag hip big code nightclub womens club party princess",
+    "code": "001",
+    "name": "Redmi Note 9",
     "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20190804141519-172778.JPG",
     "price": 15.5,
     "promotionPrice": 11.50,

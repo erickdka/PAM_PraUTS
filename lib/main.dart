@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            dataItems[index]['code'],
+                            dataItems[index]['name'],
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
