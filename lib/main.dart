@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
                             "Rp." + dataItems[index]['price'].toString(),
-                            style: TextStyle(fontSize: 16),
+                            style: TextStyle(fontSize: 16, color: Colors.red),
                           ),
                         ),
                         SizedBox(
