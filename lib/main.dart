@@ -94,7 +94,7 @@ class _HomePageState extends State<HomePage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 15),
                           child: Text(
-                            dataItems[index]['price'].toString() + " USD",
+                            "Rp." + dataItems[index]['price'].toString(),
                             style: TextStyle(fontSize: 16),
                           ),
                         ),
