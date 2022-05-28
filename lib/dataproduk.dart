@@ -3,184 +3,186 @@ List dataItems = [
     "id": 1,
     "code": "001",
     "name": "Redmi Note 9",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20190804141519-172778.JPG",
-    "price": 15.5,
-    "promotionPrice": 11.50,
+    "img": "https://i.postimg.cc/w71zR7jR/redmi9.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804141523-034249.JPG"
+        "value": "https://i.postimg.cc/w71zR7jR/redmi9.jpg"
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804141524-980179.JPG"
+        "value": "https://i.postimg.cc/pyGxdDRt/redmi91.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "S"
+        "value": "32"
       },
       {
         "id": 2,
-        "value": "M"
+        "value": "64"
       },
       {
         "id": 3,
-        "value": "L"
+        "value": "128"
       }
     ]
   },
   {
     "id": 2,
-    "code": "CS883398",
-    "name": "883398 Hong Kong style retro fashion temperament summer new casual wild sexy waist was thin",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20190804150139-403902.JPG",
-    "price": 18.00,
-    "promotionPrice": 15.00,
+    "code": "002",
+    "name": "Redmi Note 10",
+    "img": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804150143-329002.JPG"
+        "value": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804150145-295314.JPG"
+        "value": "https://i.postimg.cc/JGSLNMs6/redmi101.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "FREE-SIZE"
+        "value": "32"
+      },
+      {
+        "id": 2,
+        "value": "64"
+      },
+      {
+        "id": 3,
+        "value": "128"
       }
     ]
   },
   {
     "id": 3,
-    "code": "CS757458",
-    "name": "757458 Temperament dress summer sexy nightclub dress v-neck slim slimming irregular hips sleeveless",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20190804144244-685183.JPG",
-    "price": 16.5,
-    "promotionPrice": 12.5,
+    "code": "003",
+    "name": "Redmi Note 9",
+    "img": "https://i.postimg.cc/w71zR7jR/redmi9.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804144248-379817.JPG"
+        "value": "https://i.postimg.cc/w71zR7jR/redmi9.jpg"
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804144250-354241.JPG"
+        "value": "https://i.postimg.cc/pyGxdDRt/redmi91.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "S"
+        "value": "32"
       },
       {
         "id": 2,
-        "value": "M"
+        "value": "64"
       },
       {
         "id": 3,
-        "value": "L"
+        "value": "128"
       }
     ]
   },
   {
     "id": 4,
-    "code": "CS605084",
-    "name": "605084 Super fairy fairy skirt net red retro thin waist tie bow two wear sexy strap cake dress",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20190804135737-185821.JPG",
-    "price": 12.6,
-    "promotionPrice": 11.00,
+    "code": "004",
+    "name": "Redmi Note 10",
+    "img": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804135741-597445.JPG"
+        "value": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20190804135743-752905.JPG"
+        "value": "https://i.postimg.cc/JGSLNMs6/redmi101.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "FREE-SIZE"
+        "value": "32"
+      },
+      {
+        "id": 2,
+        "value": "64"
+      },
+      {
+        "id": 3,
+        "value": "128"
       }
     ]
   },
   {
     "id": 5,
-    "code": "CP555545",
-    "name": "555545 Autumn and winter high waist jeans",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20170203040456-681263.JPG",
-    "price": 17.00,
-    "promotionPrice": 13.00,
+    "code": "005",
+    "name": "Redmi Note 9",
+    "img": "https://i.postimg.cc/w71zR7jR/redmi9.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20170203040458-854541.JPG"
+        "value": "https://i.postimg.cc/w71zR7jR/redmi9.jpg"
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20170203040500-094722.JPG"
+        "value": "https://i.postimg.cc/pyGxdDRt/redmi91.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "25"
+        "value": "32"
       },
       {
         "id": 2,
-        "value": "26"
+        "value": "64"
       },
       {
         "id": 3,
-        "value": "27"
-      },
-      {
-        "id": 4,
-        "value": "28"
-      },
+        "value": "128"
+      }
     ]
   },
   {
     "id": 6,
-    "code": "CP598703",
-    "name": "598703 Waist large size loose casual Slim thin feet pants",
-    "img": "https://myfashion2017.s3.amazonaws.com/thum/Thefashion_20170203035455-207410.JPG",
-    "price": 14.5,
-    "promotionPrice": 17.00,
+    "code": "006",
+    "name": "Redmi Note 10",
+    "img": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
+    "price": 2000000,
     "color": [
       {
         "id": 1,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20170203035456-333499.JPG"
+        "value": "https://i.postimg.cc/sMSRKqSV/redmi10.jpg",
       },
       {
         "id": 2,
-        "value": "https://myfashion2017.s3.amazonaws.com/productimage/Thefashion_20170203035457-424978.JPG"
+        "value": "https://i.postimg.cc/JGSLNMs6/redmi101.jpg"
       }
     ],
     "size": [
       {
         "id": 1,
-        "value": "25"
+        "value": "32"
       },
       {
         "id": 2,
-        "value": "26"
+        "value": "64"
       },
       {
         "id": 3,
-        "value": "27"
-      },
-      {
-        "id": 4,
-        "value": "28"
-      },
+        "value": "128"
+      }
     ]
-  }
+  },
 ];
