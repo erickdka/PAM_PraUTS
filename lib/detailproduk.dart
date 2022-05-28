@@ -133,7 +133,7 @@ class _ProductDetailPageState extends State<ProductDetailPage> {
                       child: Row(
                     children: <Widget>[
                       Text(
-                        " Rp." + widget.promotionPrice,
+                        " Rp." + widget.price,
                         style: TextStyle(fontSize: 16, height: 1.5),
                       ),
                     ],
